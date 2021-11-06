@@ -60,7 +60,13 @@ main{
     left: 0;
 
     display: none;
+
 }
+.back-face img{
+    width: 100px;
+    height: 100px;
+}
+
 @media (max-width: 450px) {
     .title{
         font-size: 36px;
