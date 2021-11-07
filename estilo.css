@@ -33,7 +33,7 @@ main{
 
     margin-top: 7px;
 
-    background-color: #A7E9AF;
+    
 
     position: relative;
 }
@@ -44,6 +44,17 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;
+
+    position: absolute;
+
+    background-color: #A7E9AF;
+
+    border-radius: 5px;
+    
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
+    
 }
 .front-face img{
     width: 100px;
@@ -55,17 +66,29 @@ main{
 
     background-color: blueviolet;
 
-    position: absolute;
-    top: 0;
-    left: 0;
+    border-radius: 5px;
 
-    display: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
+
+    transform: rotateY(180deg);
 }
 .back-face img{
     width: 100px;
     height: 100px;
 }
+.selected div:nth-child(2){
+    transform: rotateY(0deg);
+}
+.selected div:first-child{
+    transform: rotateY(-180deg);
+}
+
 
 @media (max-width: 450px) {
     .title{

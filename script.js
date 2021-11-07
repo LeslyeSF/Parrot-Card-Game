@@ -17,13 +17,13 @@ function gamestart(){
     let areacards = document.querySelector("main");
     for(let i = 0; i<num_card; i++){
         areacards.innerHTML += `
-        <div class="card" data-identifier="card">
-        <div class="front-face" data-identifier="front-face">
-            <img src="Imagens/front.png" />
-        </div>
-        <div class="back-face" data-identifier="back-face">
-            <img src="Imagens/${cards[i]}.gif" />
-        </div>
+        <div class="card" data-identifier="card" onclick="selectedcard(this)">
+            <div class="front-face" data-identifier="front-face">
+                <img src="Imagens/front.png" />
+            </div>
+            <div class="back-face" data-identifier="back-face">
+                <img src="Imagens/${cards[i]}.gif" />
+            </div>
         </div>
         `;
     }
@@ -47,6 +47,10 @@ function comparator() {
 }
 
 
+function selectedcard(scard){
+        scard.classList.add("selected");
+        
+}
 
 
 
