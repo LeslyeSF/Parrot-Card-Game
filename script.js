@@ -7,7 +7,7 @@ let num_card = 0, plays = 0;
 function gamestart(){
     let test = true;
     while(test){
-        num_card = parseInt(prompt("Com quantas cartas você quer jogar?"));
+        num_card = parseInt(prompt("Com quantas cartas você quer jogar?(Selecione um valor entre 4 e 14 que seja par)"));
         if(num_card >= 4 && num_card <= 14 && num_card%2 === 0){
             test = false;
         }
@@ -82,7 +82,8 @@ function verifymatch(c_selected){
 function endgame(){
     if(document.querySelectorAll(".match").length === num_card){
         clearInterval(id_clock);
-        alert("Você ganhou em "+plays+" jogadas!");
+        time = document.querySelector(".clock p");
+        alert("Você ganhou em "+plays+" jogadas! Tempo de jogo: "+time.innerHTML+" segundos.");
         let restart = prompt("Deseja reiniciar o jogo?(sim/não)");
         if(restart == "sim"){
             restartgame();
@@ -99,4 +100,5 @@ function restartgame(){
     allcards.innerHTML = ``;
     gamestart();
 }
+
 gamestart();
