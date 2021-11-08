@@ -1,7 +1,8 @@
 let options = ["bobrossparrot", "explodyparrot", "fiestaparrot", "metalparrot", "revertitparrot", "tripletsparrot", "unicornparrot"];
-let cards = [];
-let name_cards_selected= [];
+let cards = [], name_cards_selected= [];
+let id_clock;
 let num_card = 0, plays = 0;
+
 
 function gamestart(){
     let test = true;
@@ -26,7 +27,9 @@ function gamestart(){
             </div>
         </div>
         `;
-    }  
+    }
+    areacards.innerHTML += `<div class="clock"><p>0</p><p>Segundos</p> </div>`;
+    id_clock = setInterval(clock, 1000); 
 }
 
 function create_shuffle_cards(){
@@ -42,6 +45,11 @@ function create_shuffle_cards(){
 
 function comparator() { 
 	return Math.random() - 0.5; 
+}
+
+function clock(areacards){
+    let time = document.querySelector(".clock p");
+    time.innerHTML =(parseInt(time.innerHTML)+1);
 }
 
 function selectedcard(selected_card, num){
@@ -73,6 +81,7 @@ function verifymatch(c_selected){
 
 function endgame(){
     if(document.querySelectorAll(".match").length === num_card){
+        clearInterval(id_clock);
         alert("Você ganhou em "+plays+" jogadas!");
         let restart = prompt("Deseja reiniciar o jogo?(sim/não)");
         if(restart == "sim"){
@@ -87,7 +96,7 @@ function restartgame(){
     num_card = 0;
     plays = 0;
     let allcards = document.querySelector("main");
-    allcards.innerHTML = "";
+    allcards.innerHTML = ``;
     gamestart();
 }
 gamestart();

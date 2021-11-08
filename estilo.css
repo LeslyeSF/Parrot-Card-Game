@@ -25,15 +25,13 @@ main{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 34px;
+    gap: 30px;
 }
 .card{
     width: 117px;
     height: 146px;
 
-    margin-top: 7px;
-
-    
+    margin-top: 7px;    
 
     position: relative;
 }
@@ -44,9 +42,11 @@ main{
     width: 100%;
     height: 100%;
 
-    background-color: blueviolet;
+    background-color: #A7E9AF;
 
-    border-radius: 5px;
+    border-radius: 10px;
+
+    box-shadow: 0px 4px 8px 0px #00000040;
 
     position: absolute;
 
@@ -70,7 +70,9 @@ main{
 
     background-color: #A7E9AF;
 
-    border-radius: 5px;
+    border-radius: 10px;
+
+    box-shadow: 0px 4px 8px 0px #00000040;
     
     backface-visibility: hidden;
     transition: all .5s;
@@ -86,6 +88,29 @@ main{
 .selected div:nth-child(2), .match div:nth-child(2){
     transform: rotateY(-180deg);
 }
+.clock{
+    width: 150px;
+    height: 80px;
+    background-color: #75B79E;
+
+    border-radius: 5px;
+
+    box-shadow: 0px 4px 8px 0px #00000040;
+
+    position: absolute;
+    top: 20PX;
+    right: 30PX;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    color: #d42222;
+    font-size: 30px;
+    font-weight: 500;
+}
 
 @media (max-width: 450px) {
     .title{
@@ -94,6 +119,19 @@ main{
     main{
         margin-left: 100px;
         margin-right: 100px;
+    }
+    .clock{
+        width: 95px;
+        height: 50px;
+
+        gap: 2px;
+
+        position: fixed;
+        top: auto;
+        right: 0;
+        bottom: 0;
+
+        font-size: 20px;
     }
     
 }
