@@ -1,9 +1,8 @@
 let options = ["bobrossparrot", "explodyparrot", "fiestaparrot", "metalparrot", "revertitparrot", "tripletsparrot", "unicornparrot"];
 let cards = [];
-
+let name_cards_selected= [];
+let num_card = 0;
 function gamestart(){
-
-    let num_card = 0;
     let test = true;
     while(test){
         num_card = parseInt(prompt("Com quantas cartas você quer jogar?"));
@@ -12,12 +11,12 @@ function gamestart(){
         }
     }
 
-    create_shuffle_cards(num_card);
+    create_shuffle_cards();
 
     let areacards = document.querySelector("main");
     for(let i = 0; i<num_card; i++){
         areacards.innerHTML += `
-        <div class="card" data-identifier="card" onclick="selectedcard(this)">
+        <div class="card" data-identifier="card" onclick="selectedcard(this,${i})">
             <div class="front-face" data-identifier="front-face">
                 <img src="Imagens/front.png" />
             </div>
@@ -26,11 +25,10 @@ function gamestart(){
             </div>
         </div>
         `;
-    }
-    
+    }  
 }
 
-function create_shuffle_cards(num_card){
+function create_shuffle_cards(){
     let counter = 0;
     for(let i = 0; i < num_card; i+=2){
         cards[i] = options[counter];
@@ -39,29 +37,35 @@ function create_shuffle_cards(num_card){
     }
 
     cards.sort(comparator);
-
 }
 
 function comparator() { 
 	return Math.random() - 0.5; 
 }
 
-
-function selectedcard(scard){
-        scard.classList.add("selected");
-        
+function selectedcard(selected_card, num){
+        if(selected_card.classList.contains("match") == false && selected_card.classList.contains("selected") == false){
+            selected_card.classList.add("selected");
+            let c_selected = document.querySelectorAll(".selected");
+            if(c_selected.length == 1){
+                name_cards_selected[0] = cards[num];
+            }else if(c_selected.length == 2){
+                name_cards_selected[1] = cards[num];
+                setTimeout(verifymatch, 1000, c_selected);
+            }
+        }
 }
 
-
-
-
-
-
-
-
-
-
-
-
+function verifymatch(c_selected){
+   if(name_cards_selected[0] == name_cards_selected[1]){
+        c_selected[0].classList.remove("selected");
+        c_selected[0].classList.add("match");
+        c_selected[1].classList.remove("selected");
+        c_selected[1].classList.add("match");
+   } else{
+        c_selected[0].classList.remove("selected");
+        c_selected[1].classList.remove("selected");
+   }
+}
 
 gamestart();

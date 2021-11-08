@@ -37,6 +37,9 @@ main{
 
     position: relative;
 }
+.card:hover{
+    cursor: pointer;
+}
 .front-face{
     width: 100%;
     height: 100%;
@@ -82,13 +85,12 @@ main{
     width: 100px;
     height: 100px;
 }
-.selected div:nth-child(2){
-    transform: rotateY(0deg);
-}
-.selected div:first-child{
+.selected div:first-child, .match div:first-child{
     transform: rotateY(-180deg);
 }
-
+.selected div:nth-child(2), .match div:nth-child(2){
+    transform: rotateY(0deg);
+}
 
 @media (max-width: 450px) {
     .title{
