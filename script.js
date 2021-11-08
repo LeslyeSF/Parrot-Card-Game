@@ -1,7 +1,8 @@
 let options = ["bobrossparrot", "explodyparrot", "fiestaparrot", "metalparrot", "revertitparrot", "tripletsparrot", "unicornparrot"];
 let cards = [];
 let name_cards_selected= [];
-let num_card = 0;
+let num_card = 0, plays = 0;
+
 function gamestart(){
     let test = true;
     while(test){
@@ -18,10 +19,10 @@ function gamestart(){
         areacards.innerHTML += `
         <div class="card" data-identifier="card" onclick="selectedcard(this,${i})">
             <div class="front-face" data-identifier="front-face">
-                <img src="Imagens/front.png" />
+                <img src="Imagens/${cards[i]}.gif" />
             </div>
             <div class="back-face" data-identifier="back-face">
-                <img src="Imagens/${cards[i]}.gif" />
+                <img src="Imagens/front.png" />
             </div>
         </div>
         `;
@@ -59,13 +60,20 @@ function selectedcard(selected_card, num){
 function verifymatch(c_selected){
    if(name_cards_selected[0] == name_cards_selected[1]){
         c_selected[0].classList.remove("selected");
-        c_selected[0].classList.add("match");
         c_selected[1].classList.remove("selected");
+        c_selected[0].classList.add("match");
         c_selected[1].classList.add("match");
    } else{
         c_selected[0].classList.remove("selected");
         c_selected[1].classList.remove("selected");
    }
+   plays++;
+   endgame();
 }
 
+function endgame(){
+    if(document.querySelectorAll(".match").length === num_card){
+        alert("Você ganhou em "+plays+" jogadas!");
+    }
+}
 gamestart();
