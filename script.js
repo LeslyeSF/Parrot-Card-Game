@@ -74,6 +74,20 @@ function verifymatch(c_selected){
 function endgame(){
     if(document.querySelectorAll(".match").length === num_card){
         alert("Você ganhou em "+plays+" jogadas!");
+        let restart = prompt("Deseja reiniciar o jogo?(sim/não)");
+        if(restart == "sim"){
+            restartgame();
+        }
     }
+    
+    
+}
+function restartgame(){
+    cards = [];
+    num_card = 0;
+    plays = 0;
+    let allcards = document.querySelector("main");
+    allcards.innerHTML = "";
+    gamestart();
 }
 gamestart();
