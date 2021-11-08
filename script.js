@@ -44,7 +44,7 @@ function comparator() {
 }
 
 function selectedcard(selected_card, num){
-        if(selected_card.classList.contains("match") == false && selected_card.classList.contains("selected") == false){
+        if(document.querySelectorAll(".selected").length < 2){
             selected_card.classList.add("selected");
             let c_selected = document.querySelectorAll(".selected");
             if(c_selected.length == 1){
